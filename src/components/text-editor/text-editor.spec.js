@@ -109,6 +109,7 @@ describe("TextEditor", () => {
         value={createContent()}
         labelText="Text Editor Label"
         labelId="foo"
+        onChange={jest.fn}
         {...props}
       />
     ));
@@ -909,15 +910,20 @@ describe("TextEditor", () => {
 
   describe("custom row prop type", () => {
     it("throws an error if value less than 2 passed", () => {
-      jest.spyOn(global.console, "error");
+      jest.spyOn(global.console, "error").mockImplementation(() => {});
       wrapper = render({ rows: 1 });
       expect(console.error).toHaveBeenCalled();
     });
 
     it("throws an error if value is not a number", () => {
-      jest.spyOn(global.console, "error");
+      jest.spyOn(global.console, "error").mockImplementation(() => {});
       wrapper = render({ rows: "foo" });
       expect(console.error).toHaveBeenCalled();
+    });
+
+    afterAll(() => {
+      // Clear Mock
+      global.console.error.mockReset();
     });
   });
 
