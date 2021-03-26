@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MarginSpacingProps } from '../../../utils/helpers/options-helper';
+import { MarginSpacingProps } from '../../utils/helpers/options-helper';
 
 export interface NoteProps extends MarginSpacingProps {
    noteContent: object;
