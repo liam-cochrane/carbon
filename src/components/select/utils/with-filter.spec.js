@@ -114,12 +114,12 @@ const FilteredListComponent = withFilter(ListComponent);
 function renderFilteredOptions(props, renderer = mount) {
   return renderer(
     <FilteredListComponent {...props}>
-      <Option />
-      <Option text="blue" />
-      <Option text="green" />
-      <Option text="black" />
-      <Option text="purple" />
-      <Option text="brown" />
+      <Option text="red" value="0" />
+      <Option text="blue" value="1" />
+      <Option text="green" value="2" />
+      <Option text="black" value="3" />
+      <Option text="purple" value="4" />
+      <Option text="brown" value="5" />
     </FilteredListComponent>
   );
 }
@@ -127,33 +127,33 @@ function renderFilteredOptions(props, renderer = mount) {
 function renderFilteredOptionRows(props, renderer = mount) {
   return renderer(
     <FilteredListComponent multiColumn {...props}>
-      <OptionRow text="amber">
-        <td>
+      <OptionRow text="amber" value="0">
+        <div>
           <div />
-        </td>
-        <td>
+        </div>
+        <div>
           <div />
-        </td>
+        </div>
       </OptionRow>
-      <OptionRow text="blue">
-        <td>Blue</td>
-        <td>Light</td>
+      <OptionRow text="blue" value="1">
+        <div>Blue</div>
+        <div>Light</div>
       </OptionRow>
-      <OptionRow text="green">
-        <td>Green</td>
-        <td>Light</td>
+      <OptionRow text="green" value="2">
+        <div>Green</div>
+        <div>Light</div>
       </OptionRow>
-      <OptionRow text="black">
-        <td>Black</td>
-        <td>Dark</td>
+      <OptionRow text="black" value="3">
+        <div>Black</div>
+        <div>Dark</div>
       </OptionRow>
-      <OptionRow text="purple">
-        <td>Purple</td>
-        <td>Dark</td>
+      <OptionRow text="purple" value="4">
+        <div>Purple</div>
+        <div>Dark</div>
       </OptionRow>
-      <OptionRow text="brown">
-        <td>Brown</td>
-        <td>Dark</td>
+      <OptionRow text="brown" value="5">
+        <div>Brown</div>
+        <div>Dark</div>
       </OptionRow>
     </FilteredListComponent>
   );
