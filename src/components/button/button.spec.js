@@ -161,6 +161,16 @@ describe("Button", () => {
     });
   });
 
+  describe("when there are no iconType or children passed", () => {
+    it("throws an error", () => {
+      jest.spyOn(global.console, "error").mockImplementation(() => {});
+      render({}, mount);
+
+      expect(console.error).toHaveBeenCalled(); // eslint-disable-line no-console
+      global.console.error.mockReset();
+    });
+  });
+
   describe.each(variants)(
     'when setting the "buttonType" prop to "%s"',
     (variant) => {
