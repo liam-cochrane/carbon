@@ -80,7 +80,7 @@ describe("SelectList", () => {
         ["Escape", escapeKeyDownEvent],
         ["Tab", tabKeyDownEvent],
         ["Enter", enterKeyDownEvent],
-      ])("and it's the %s key", (keyName, keyEvent) => {
+      ])("and it's the %s key", (_, keyEvent) => {
         it("then the onSelectListClose prop should be called", () => {
           testContainer.dispatchEvent(keyEvent);
           expect(onSelectListCloseFn).toHaveBeenCalled();
@@ -290,6 +290,8 @@ describe("SelectList", () => {
     document.body.appendChild(testContainer);
 
     beforeEach(() => {
+      // wrapping in act will not fix this error as it triggers placement on mount
+      jest.spyOn(global.console, "error").mockImplementation(() => {});
       wrapper = mount(getSelectList({ anchorElement: mockAnchorElement }), {
         attachTo: testContainer,
       });
@@ -297,6 +299,7 @@ describe("SelectList", () => {
 
     afterEach(() => {
       wrapper.detach();
+      global.console.error.mockReset();
     });
 
     afterAll(() => {
@@ -317,7 +320,9 @@ describe("SelectList", () => {
             width: 400,
           };
         };
-        window.dispatchEvent(new Event("resize"));
+        act(() => {
+          window.dispatchEvent(new Event("resize"));
+        });
         wrapper.update();
         assertStyleMatch(
           { width: "400px" },
@@ -401,7 +406,9 @@ describe("SelectList", () => {
               isLoading
             >
               {multiColumn ? (
-                <OptionRow value="opt1" text="red" />
+                <OptionRow value="opt1" text="red">
+                  foo
+                </OptionRow>
               ) : (
                 <Option value="opt1" text="red" />
               )}
