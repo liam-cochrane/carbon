@@ -19,6 +19,15 @@ import InputPresentationStyle from "../../../__experimental__/components/input/i
 describe("MultiSelect", () => {
   testStyledSystemMargin((props) => getSelect(props));
 
+  beforeEach(() => {
+    // wrapping in act will not fix this error as it triggers placement on mount
+    jest.spyOn(global.console, "error").mockImplementation(() => {});
+  });
+
+  afterAll(() => {
+    global.console.error.mockReset();
+  });
+
   describe("when an HTML element is clicked", () => {
     let wrapper;
     let domNode;
