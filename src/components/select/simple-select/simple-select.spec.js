@@ -23,9 +23,15 @@ describe("SimpleSelect", () => {
     let domNode;
 
     beforeEach(() => {
+      // wrapping in act will not fix this error as it triggers placement on mount
+      jest.spyOn(global.console, "error").mockImplementation(() => {});
       wrapper = mount(getSelect());
       domNode = wrapper.getDOMNode();
       document.body.appendChild(domNode);
+    });
+
+    afterAll(() => {
+      global.console.error.mockReset();
     });
 
     describe("and that element is an Option of the Select List", () => {
