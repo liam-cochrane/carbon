@@ -16,7 +16,6 @@
     "debug": "node --inspect ./node_modules/jest-cli/bin/jest --watch --config=./jest.conf.json",
     "format": "prettier --write './src/**/*.js'",
     "lint": "eslint ./src",
-    "lint-ts": "./node_modules/.bin/tslint 'src/**/*.ts'",
     "precompile": "npm run clean-lib && npm run copy-files && npm run babel",
     "prepublishOnly": "npm run precompile",
     "watch": "npm run clean-lib && npm run copy-files -- --watch & npm run babel -- --watch",
@@ -76,6 +75,8 @@
     "@types/react-dom": "16.0.11",
     "@types/styled-components": "^5.1.9",
     "@types/styled-system": "^5.1.11",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
     "axe-core": "^3.5.5",
     "babel-eslint": "10.0.3",
     "babel-jest": "^26.6.3",
@@ -97,13 +98,14 @@
     "enzyme-to-json": "^3.4.0",
     "eslint": "^7.25.0",
     "eslint-config-airbnb": "17.0.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-cypress": "^2.0.1",
-    "eslint-plugin-import": "2.13.0",
-    "eslint-plugin-jsx-a11y": "6.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-no-unsanitized": "^3.1.4",
-    "eslint-plugin-react": "7.19.0",
-    "eslint-plugin-react-hooks": "2.3.0",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8",
     "events": "~1.1.1",
     "flux": "^4.0.1",
     "husky": "^4.3.6",
@@ -122,9 +124,7 @@
     "rimraf": "^3.0.2",
     "semantic-release": "^17.4.0",
     "styled-components": "^4.4.1",
-    "tslint": "5.20.1",
-    "tslint-react": "3.6.0",
-    "typescript": "3.2.4",
+    "typescript": "3.9.4",
     "xhr-mock": "^2.5.1"
   },
   "dependencies": {
@@ -175,7 +175,7 @@
     }
   },
   "lint-staged": {
-    "./**/*.{js,jsx}": [
+    "./**/*.{js,jsx,ts,tsx}": [
       "prettier --write",
       "eslint"
     ]
