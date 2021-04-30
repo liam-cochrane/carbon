@@ -14,6 +14,15 @@ import Label from "../../../__experimental__/components/label";
 describe("FilterableSelect", () => {
   testStyledSystemMargin((props) => getSelect(props));
 
+  beforeEach(() => {
+    // wrapping in act will not fix this error as it triggers placement on mount
+    jest.spyOn(global.console, "error").mockImplementation(() => {});
+  });
+
+  afterAll(() => {
+    global.console.error.mockReset();
+  });
+
   it('the Textbox should have type of "text"', () => {
     const wrapper = renderSelect();
 
