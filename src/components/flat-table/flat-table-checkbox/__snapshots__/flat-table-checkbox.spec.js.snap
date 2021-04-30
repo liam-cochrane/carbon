@@ -151,66 +151,72 @@ exports[`FlatTableCheckbox "th" is passed in via the "as" prop renders to match 
   padding-top: 0px;
 }
 
-<th
-  className="c0"
-  data-element="flat-table-checkbox-header"
->
-  <div
-    className="c1 c2"
-    data-component="checkbox"
-    name="flat-table-checkbox"
-    onClick={[Function]}
-  >
-    <div
-      className="c3"
-      name="flat-table-checkbox"
-      onClick={[Function]}
-    >
-      <div
-        className="c4 c5"
+<table>
+  <thead>
+    <tr>
+      <th
+        className="c0"
+        data-element="flat-table-checkbox-header"
       >
         <div
-          className="c6 c7"
+          className="c1 c2"
+          data-component="checkbox"
+          name="flat-table-checkbox"
+          onClick={[Function]}
         >
           <div
-            className="c8 c9"
+            className="c3"
+            name="flat-table-checkbox"
+            onClick={[Function]}
           >
-            <input
-              aria-describedby="guid-12345-help"
-              aria-labelledby="guid-12345-label"
-              className="c10 c11"
-              id="guid-12345"
-              name="flat-table-checkbox"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              role="checkbox"
-              type="checkbox"
-            />
             <div
-              className="c12 "
+              className="c4 c5"
             >
-              <svg
-                focusable="false"
-                height="10"
-                viewBox="0 0 12 10"
-                width="12"
+              <div
+                className="c6 c7"
               >
-                <path
-                  d="M.237 6.477A.752.752 0 0 1 .155 5.47l.851-1.092a.63.63 0 0 1 .934-.088l2.697 1.964, 4.674-6a.63.63 0 0 1 .933-.088l1.015.917c.28.254.317.703.081 1.005L6.353 8.492a.725.725, 0 0 1-.095.16l-.85 1.093a.637.637 0 0 1-.626.244.638.638 0 0 1-.335-.16L.237 6.476z"
-                  fill="#FFFFFF"
-                  fillRule="evenodd"
-                />
-              </svg>
+                <div
+                  className="c8 c9"
+                >
+                  <input
+                    aria-describedby="guid-12345-help"
+                    aria-labelledby="guid-12345-label"
+                    className="c10 c11"
+                    id="guid-12345"
+                    name="flat-table-checkbox"
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    role="checkbox"
+                    type="checkbox"
+                  />
+                  <div
+                    className="c12 "
+                  >
+                    <svg
+                      focusable="false"
+                      height="10"
+                      viewBox="0 0 12 10"
+                      width="12"
+                    >
+                      <path
+                        d="M.237 6.477A.752.752 0 0 1 .155 5.47l.851-1.092a.63.63 0 0 1 .934-.088l2.697 1.964, 4.674-6a.63.63 0 0 1 .933-.088l1.015.917c.28.254.317.703.081 1.005L6.353 8.492a.725.725, 0 0 1-.095.16l-.85 1.093a.637.637 0 0 1-.626.244.638.638 0 0 1-.335-.16L.237 6.476z"
+                        fill="#FFFFFF"
+                        fillRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</th>
+      </th>
+    </tr>
+  </thead>
+</table>
 `;
 
 exports[`FlatTableCheckbox the "as" prop is not passed in renders to match the expected styling for a "td" element 1`] = `
@@ -362,64 +368,70 @@ exports[`FlatTableCheckbox the "as" prop is not passed in renders to match the e
   padding-top: 0px;
 }
 
-<td
-  className="c0"
-  data-element="flat-table-checkbox-cell"
->
-  <div
-    className="c1 c2"
-    data-component="checkbox"
-    name="flat-table-checkbox"
-    onClick={[Function]}
-  >
-    <div
-      className="c3"
-      name="flat-table-checkbox"
-      onClick={[Function]}
-    >
-      <div
-        className="c4 c5"
+<table>
+  <tbody>
+    <tr>
+      <td
+        className="c0"
+        data-element="flat-table-checkbox-cell"
       >
         <div
-          className="c6 c7"
+          className="c1 c2"
+          data-component="checkbox"
+          name="flat-table-checkbox"
+          onClick={[Function]}
         >
           <div
-            className="c8 c9"
+            className="c3"
+            name="flat-table-checkbox"
+            onClick={[Function]}
           >
-            <input
-              aria-describedby="guid-12345-help"
-              aria-labelledby="guid-12345-label"
-              className="c10 c11"
-              id="guid-12345"
-              name="flat-table-checkbox"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              role="checkbox"
-              type="checkbox"
-            />
             <div
-              className="c12 "
+              className="c4 c5"
             >
-              <svg
-                focusable="false"
-                height="10"
-                viewBox="0 0 12 10"
-                width="12"
+              <div
+                className="c6 c7"
               >
-                <path
-                  d="M.237 6.477A.752.752 0 0 1 .155 5.47l.851-1.092a.63.63 0 0 1 .934-.088l2.697 1.964, 4.674-6a.63.63 0 0 1 .933-.088l1.015.917c.28.254.317.703.081 1.005L6.353 8.492a.725.725, 0 0 1-.095.16l-.85 1.093a.637.637 0 0 1-.626.244.638.638 0 0 1-.335-.16L.237 6.476z"
-                  fill="#FFFFFF"
-                  fillRule="evenodd"
-                />
-              </svg>
+                <div
+                  className="c8 c9"
+                >
+                  <input
+                    aria-describedby="guid-12345-help"
+                    aria-labelledby="guid-12345-label"
+                    className="c10 c11"
+                    id="guid-12345"
+                    name="flat-table-checkbox"
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    role="checkbox"
+                    type="checkbox"
+                  />
+                  <div
+                    className="c12 "
+                  >
+                    <svg
+                      focusable="false"
+                      height="10"
+                      viewBox="0 0 12 10"
+                      width="12"
+                    >
+                      <path
+                        d="M.237 6.477A.752.752 0 0 1 .155 5.47l.851-1.092a.63.63 0 0 1 .934-.088l2.697 1.964, 4.674-6a.63.63 0 0 1 .933-.088l1.015.917c.28.254.317.703.081 1.005L6.353 8.492a.725.725, 0 0 1-.095.16l-.85 1.093a.637.637 0 0 1-.626.244.638.638 0 0 1-.335-.16L.237 6.476z"
+                        fill="#FFFFFF"
+                        fillRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</td>
+      </td>
+    </tr>
+  </tbody>
+</table>
 `;
