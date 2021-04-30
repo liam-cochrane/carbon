@@ -42,12 +42,20 @@ describe("ColorSampleBox", () => {
   });
 
   describe("prop types", () => {
+    beforeEach(() => {
+      jest.spyOn(global.console, "error").mockImplementation(() => {});
+    });
+
+    afterAll(() => {
+      global.console.error.mockReset();
+    });
+
     const wrongColorValues = ["rgb(0,0,0)", "#fff", "test"];
+
     describe.each(wrongColorValues)(
       "when other than 6 digit hex format is passed",
       (color) => {
         it("throws an error", () => {
-          jest.spyOn(global.console, "error");
           wrapper = render({ checked: true, color });
           expect(console.error).toHaveBeenCalled();
         });
