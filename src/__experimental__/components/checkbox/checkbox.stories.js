@@ -7,7 +7,7 @@ import { Checkbox } from ".";
 import AutoFocus from "../../../utils/helpers/auto-focus";
 
 export default {
-  title: "Experimental/Checkbox/Test",
+  title: "Design System/Checkbox/Test",
   component: Checkbox,
   parameters: {
     info: {
