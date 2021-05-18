@@ -13,7 +13,7 @@ import StyledInputPresentation from "../input/input-presentation.style";
 import FormFieldStyle from "../form-field/form-field.style";
 import FormField from "../form-field";
 import { rootTagTest } from "../../../utils/helpers/tags/tags-specs";
-import Label from "../label";
+import Label from "../../../__internal__/label";
 
 describe("NumeralDate", () => {
   let wrapper;

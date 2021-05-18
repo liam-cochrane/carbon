@@ -5,7 +5,7 @@ import FieldHelpStyle from "../../../__internal__/field-help/field-help.style";
 import HiddenCheckableInputStyle from "../../../__internal__/checkable-input/hidden-checkable-input.style";
 import { StyledCheckableInput } from "../../../__internal__/checkable-input/checkable-input.style";
 import StyledCheckableInputSvgWrapper from "../../../__internal__/checkable-input/checkable-input-svg-wrapper.style";
-import { StyledLabelContainer } from "../label/label.style";
+import { StyledLabelContainer } from "../../../__internal__/label/label.style";
 import baseTheme from "../../../style/themes/base";
 import FormFieldStyle from "../form-field/form-field.style";
 

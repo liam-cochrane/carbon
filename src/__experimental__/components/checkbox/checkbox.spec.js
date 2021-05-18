@@ -15,7 +15,7 @@ import {
   carbonThemesJestTable,
   mockMatchMedia,
 } from "../../../__spec_helper__/test-utils";
-import Label from "../label";
+import Label from "../../../__internal__/label";
 import Tooltip from "../../../components/tooltip";
 
 jest.mock("../../../utils/helpers/guid");

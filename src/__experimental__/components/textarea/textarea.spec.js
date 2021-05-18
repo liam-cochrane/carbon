@@ -12,9 +12,9 @@ import baseTheme from "../../../style/themes/base";
 import InputPresentation from "../input/input-presentation.component";
 import { Input } from "../input";
 import ValidationIcon from "../../../components/validations/validation-icon.component";
-import Label from "../label";
+import Label from "../../../__internal__/label";
 import guid from "../../../utils/helpers/guid";
-import { StyledLabelContainer } from "../label/label.style";
+import { StyledLabelContainer } from "../../../__internal__/label/label.style";
 
 jest.mock("../../../utils/helpers/guid");
 guid.mockImplementation(() => "guid-12345");

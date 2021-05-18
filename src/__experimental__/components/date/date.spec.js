@@ -11,7 +11,7 @@ import Textbox from "../../../components/textbox";
 import StyledDateInput from "./date.style";
 import DateHelper from "../../../utils/helpers/date/date";
 import { isEdge } from "../../../utils/helpers/browser-type-check";
-import Label from "../label";
+import Label from "../../../__internal__/label";
 
 moment.suppressDeprecationWarnings = true;
 jest.useFakeTimers();

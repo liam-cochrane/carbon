@@ -11,7 +11,7 @@ import CheckableInput from "../../../__internal__/checkable-input";
 import { StyledCheckableInput } from "../../../__internal__/checkable-input/checkable-input.style";
 import FieldHelpStyle from "../../../__internal__/field-help/field-help.style";
 import HiddenCheckableInputStyle from "../../../__internal__/checkable-input/hidden-checkable-input.style";
-import { StyledLabelContainer } from "../label/label.style";
+import { StyledLabelContainer } from "../../../__internal__/label/label.style";
 import StyledSwitchSlider from "./switch-slider.style";
 import guid from "../../../utils/helpers/guid";
 import {
@@ -25,7 +25,7 @@ import { baseTheme } from "../../../style/themes";
 import SwitchSliderPanel from "./switch-slider-panel.style";
 import SwitchStyle from "./switch.style";
 import SwitchSlider from "./switch-slider.component";
-import Label from "../label";
+import Label from "../../../__internal__/label";
 
 jest.mock("../../../utils/helpers/guid");
 guid.mockImplementation(() => "guid-12345");
