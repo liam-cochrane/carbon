@@ -109,12 +109,14 @@ const Tabs = ({
   const focusTab = (ref) => ref.focus();
 
   /** The children nodes converted into an Array */
-  const filteredChildren = () =>
-    React.Children.toArray(children).filter((child) => child);
+  const filteredChildren = React.useMemo(
+    () => React.Children.toArray(children).filter((child) => child),
+    [children]
+  );
 
   /** Array of the tabIds for the child nodes */
   const tabIds = () => {
-    return filteredChildren().map((child) => child.props.tabId);
+    return filteredChildren.map((child) => child.props.tabId);
   };
 
   /** Will trigger the tab at the given index. */
@@ -162,7 +164,7 @@ const Tabs = ({
 
   /** Build the headers for the tab component */
   const renderTabHeaders = () => {
-    const tabTitles = filteredChildren().map((child, index) => {
+    const tabTitles = filteredChildren.map((child, index) => {
       const {
         tabId,
         title,
@@ -261,7 +263,7 @@ const Tabs = ({
   const visibleTab = () => {
     let tab;
 
-    filteredChildren().forEach((child) => {
+    filteredChildren.forEach((child) => {
       if (isTabSelected(child.props.tabId)) {
         tab = child;
       }
@@ -282,7 +284,7 @@ const Tabs = ({
       return visibleTab();
     }
 
-    const tabs = filteredChildren().map((child) => {
+    const tabs = filteredChildren.map((child) => {
       return React.cloneElement(child, {
         ...child.props,
         role: "tabpanel",
@@ -306,12 +308,7 @@ const Tabs = ({
       }
       previousSelectedTabId.current = selectedTabId;
     }
-  }, [
-    previousSelectedTabId,
-    selectedTabId,
-    selectedTabIdState,
-    updateVisibleTab,
-  ]);
+  }, [previousSelectedTabId, selectedTabId, selectedTabIdState]);
 
   return (
     <StyledTabs
