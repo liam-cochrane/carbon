@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { mount as enzymeMount } from "enzyme";
-import I18n from "i18n-js";
 
-import { testStyledSystemMargin } from "../../../__spec_helper__/test-utils";
 import Decimal from "./decimal.component";
 import Textbox from "../textbox/textbox.component";
 import Label from "../label";
+import { testStyledSystemMargin } from "../../../__spec_helper__/test-utils";
 import FormFieldStyle from "../form-field/form-field.style";
 
 // These have been written in a way that we can change our testing library or component implementation with relative
@@ -115,31 +114,6 @@ describe("Decimal", () => {
     return press({ clipboardData }, where, "paste");
   };
 
-  let translations;
-
-  testStyledSystemMargin(
-    (props) => <Decimal {...props} />,
-    undefined,
-    (component) => component.find(FormFieldStyle),
-    { modifier: "&&&" }
-  );
-
-  beforeAll(() => {
-    translations = { ...I18n.translations };
-    I18n.translations.fr = {
-      number: {
-        format: {
-          delimiter: ".",
-          separator: ",",
-        },
-      },
-    };
-  });
-
-  afterAll(() => {
-    I18n.translations = translations;
-  });
-
   beforeEach(() => {
     container = document.createElement("div");
     document.body.appendChild(container);
@@ -154,6 +128,13 @@ describe("Decimal", () => {
       wrapper = null;
     }
   });
+
+  testStyledSystemMargin(
+    (props) => <Decimal {...props} />,
+    undefined,
+    (component) => component.find(FormFieldStyle),
+    { modifier: "&&&" }
+  );
 
   it("renders in ReactDOM", () => {
     render(null, DOM);
@@ -614,28 +595,22 @@ describe("Decimal", () => {
     );
 
     describe("i18n", () => {
-      beforeAll(() => {
-        I18n.locale = "fr";
-      });
-
-      afterAll(() => {
-        I18n.locale = undefined;
-      });
+      const itProps = { locale: "it" };
 
       it("has a defaultValue of 0,00", () => {
-        render();
+        render({ ...itProps });
         expect(value()).toBe("0,00");
         expect(hiddenValue()).toBe("0.00");
       });
 
       it("allows the defaultValue to be defined", () => {
-        render({ defaultValue: "12345.67" });
+        render({ defaultValue: "12345.67", ...itProps });
         expect(value()).toBe("12.345,67");
         expect(hiddenValue()).toBe("12345.67");
       });
 
       it("formats a value correctly", () => {
-        render();
+        render({ ...itProps });
         type("1234576");
         blur();
         expect(value()).toBe("1.234.576,00");
@@ -643,7 +618,7 @@ describe("Decimal", () => {
       });
 
       it("formats a value correctly (extra separator)", () => {
-        render();
+        render({ ...itProps });
         type("1.2.34576,00");
         blur();
         expect(value()).toBe("1.234.576,00");
@@ -652,7 +627,7 @@ describe("Decimal", () => {
 
       it("fixes incorrectly placed delimiters", () => {
         const onBlur = jest.fn();
-        render({ onBlur, defaultValue: "0.00" });
+        render({ onBlur, defaultValue: "0.00", ...itProps });
         type("1.1");
         blur();
         expect(value()).toBe("11,00");
@@ -660,7 +635,7 @@ describe("Decimal", () => {
       });
 
       it("renders a negative value", () => {
-        render({ defaultValue: "-1234.56" });
+        render({ defaultValue: "-1234.56", ...itProps });
         expect(value()).toBe("-1.234,56");
         expect(hiddenValue()).toBe("-1234.56");
       });
@@ -672,7 +647,12 @@ describe("Decimal", () => {
         "entering a negative sign and blurring should revert to the defaultValue (%s)",
         (formattedValue, rawValue, props) => {
           const onBlur = jest.fn();
-          render({ onBlur, defaultValue: "-1234.56", ...props });
+          render({
+            onBlur,
+            defaultValue: "-1234.56",
+            ...props,
+            ...itProps,
+          });
           type("-");
           blur();
           expect(value()).toBe("-");
@@ -732,7 +712,7 @@ describe("Decimal", () => {
       describe("precision", () => {
         it("fires a console error when precision is changed once component is loaded.", () => {
           jest.spyOn(global.console, "error").mockImplementation(() => {});
-          render({ defaultValue: "12345", precision: 2 });
+          render({ defaultValue: "12345", precision: 2, ...itProps });
           setProps({ precision: 1 });
           expect(console.error).toHaveBeenCalledWith(
             "Decimal `precision` prop has changed value. Changing the Decimal `precision` prop has no effect."
@@ -740,20 +720,20 @@ describe("Decimal", () => {
         });
 
         it("supports a precision of 0", () => {
-          render({ defaultValue: "12345", precision: 0 });
+          render({ defaultValue: "12345", precision: 0, ...itProps });
           expect(value()).toBe("12.345");
           expect(hiddenValue()).toBe("12345");
         });
 
         it("supports having a bigger precision", () => {
-          render({ defaultValue: "12345.654", precision: 3 });
+          render({ defaultValue: "12345.654", precision: 3, ...itProps });
           expect(value()).toBe("12.345,654");
           expect(hiddenValue()).toBe("12345.654");
         });
 
         it("has a default precision of 2 and does not round", () => {
           const onBlur = jest.fn();
-          render({ onBlur });
+          render({ onBlur, ...itProps });
           type("12345,566");
           blur();
           expect(onBlur).toHaveBeenCalledWith(
@@ -770,7 +750,7 @@ describe("Decimal", () => {
 
         it("adds additional zeros if required", () => {
           const onBlur = jest.fn();
-          render({ onBlur, precision: 4 });
+          render({ onBlur, precision: 4, ...itProps });
           type("12345,56");
           blur();
           expect(value()).toBe("12.345,5600");
@@ -779,7 +759,7 @@ describe("Decimal", () => {
 
         it("does not format a value with numbers and too many delimiters", () => {
           const onBlur = jest.fn();
-          render({ onBlur, precision: 4 });
+          render({ onBlur, precision: 4, ...itProps });
           type("123..45,56");
           blur();
           expect(value()).toBe("123..45,56");
@@ -788,16 +768,34 @@ describe("Decimal", () => {
 
         it("does not format a value with numbers and too many separators", () => {
           const onBlur = jest.fn();
-          render({ onBlur, precision: 4 });
+          render({ onBlur, precision: 4, ...itProps });
           type("1,,2345,56");
           blur();
           expect(value()).toBe("1,,2345,56");
           expect(hiddenValue()).toBe("1,,2345,56");
         });
+
+        it("supports having a shorter number", () => {
+          render({ defaultValue: "12345.6", precision: 3, ...itProps });
+          expect(value()).toBe("12.345,600");
+          expect(hiddenValue()).toBe("12345.600");
+        });
+
+        it("supports having a longer number on default", () => {
+          render({ defaultValue: "123123.99999", precision: 3, ...itProps });
+          expect(value()).toBe("123.123,99999");
+          expect(hiddenValue()).toBe("123123.99999");
+        });
+
+        it("supports having a longer number on change", () => {
+          render({ value: "123123.99999", precision: 3, ...itProps });
+          expect(value()).toBe("123.123,99999");
+          expect(hiddenValue()).toBe("123123.99999");
+        });
       });
 
       it("calls onChange when the user enters a value", () => {
-        render();
+        render({ ...itProps });
         type("12345,56");
         expect(onChange).toHaveBeenCalledWith(
           expect.objectContaining({
@@ -813,7 +811,7 @@ describe("Decimal", () => {
 
       it("calls onBlur when the field loses focus", () => {
         const onBlur = jest.fn();
-        render({ onBlur });
+        render({ onBlur, ...itProps });
         type("12345,56");
         blur();
         expect(onBlur).toHaveBeenCalledWith(
@@ -879,7 +877,7 @@ describe("Decimal", () => {
             "1.234,5|6|",
             "|1.234,56|",
           ])("%s", (where) => {
-            render({ defaultValue: "1234.56" });
+            render({ defaultValue: "1234.56", ...itProps });
             const { preventDefault } = press({ key }, where);
             expect(preventDefault).not.toHaveBeenCalled();
           });
