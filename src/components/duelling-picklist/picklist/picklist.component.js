@@ -14,9 +14,7 @@ export const Picklist = ({ disabled, children, placeholder, index }) => {
     children,
   ]);
 
-  const filteredChildren = React.Children.toArray(children).filter(
-    (child) => child
-  );
+  const filteredChildren = React.Children.toArray(children);
 
   const refs = useMemo(
     () =>

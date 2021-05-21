@@ -24,9 +24,7 @@ const PicklistGroup = React.forwardRef(
     const { setElementToFocus, elementToFocus } = useContext(FocusContext);
     const [highlighted, setHighlighted] = useState(false);
 
-    const filteredChildren = React.Children.toArray(children).filter(
-      (child) => child
-    );
+    const filteredChildren = React.Children.toArray(children);
 
     const handleClick = useCallback(() => {
       onChange();
