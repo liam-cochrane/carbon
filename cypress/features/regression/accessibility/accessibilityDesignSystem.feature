@@ -226,3 +226,8 @@ Feature: Accessibility tests - Design System folder
       | group checkbox string validation   |
       | single checkbox boolean validation |
       | single checkbox string validation  |
+
+  @accessibility
+  Scenario: Design System checkbox with asterisk
+    When I open "Design System checkbox validations" component page "required" in no iframe
+    Then "Design System checkbox with asterisk" component has no accessibility violations

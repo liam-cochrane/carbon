@@ -77,11 +77,6 @@ Feature: Accessibility tests - Experimental folder
       | single switch string validation validation on label |
 
   @accessibility
-  Scenario: Experimental checkbox with asterisk
-    When I open "Experimental checkbox validations" component page "required" in no iframe
-    Then "Experimental checkbox with asterisk" component has no accessibility violations
-
-  @accessibility
   Scenario: Component radiobutton with legend and labels story
     When I open "Experimental radiobutton" component page "with legend and labels" in no iframe
     Then "radiobutton with legend and labels story" component has no accessibility violations
