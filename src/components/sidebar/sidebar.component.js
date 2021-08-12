@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import Modal from "../modal";
@@ -11,7 +11,7 @@ import Box from "../box";
 
 export const SidebarContext = React.createContext({});
 
-const Sidebar = ({
+const Sidebar = React.forwardRef(({
   open,
   disableEscKey,
   enableBackgroundUI,
@@ -21,9 +21,7 @@ const Sidebar = ({
   children,
   onCancel,
   ...rest
-}) => {
-  const sideBarRef = useRef();
-
+}, sideBarRef) => {
   const closeIcon = () => {
     if (!onCancel) return null;
     return (
@@ -80,7 +78,7 @@ const Sidebar = ({
       )}
     </Modal>
   );
-};
+});
 
 Sidebar.propTypes = {
   /** Modal content */
